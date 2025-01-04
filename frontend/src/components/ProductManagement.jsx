@@ -3,6 +3,49 @@ import { Table, Button, Form, Modal, Row, Col, Alert, InputGroup } from 'react-b
 import axios from 'axios';
 import { FaEdit, FaTrash, FaFileImport, FaFileExport, FaSearch } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
+import React, { useState } from 'react';
+import { addProduct } from './api';
+
+const AddProductPage = () => {
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const handleAddProduct = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            await addProduct(token, { name, description });
+            setSuccess('Product added successfully');
+            setName('');
+            setDescription('');
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+
+    return (
+        <div>
+            <h2>Add Product</h2>
+            <input
+                type="text"
+                placeholder="Product Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+            <button onClick={handleAddProduct}>Add Product</button>
+            {error && <p>{error}</p>}
+            {success && <p>{success}</p>}
+        </div>
+    );
+};
+export default AddProductPage;
 
 const ProductManagement = () => {
     const [products, setProducts] = useState([]);
