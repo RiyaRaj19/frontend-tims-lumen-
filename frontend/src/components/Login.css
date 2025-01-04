@@ -1,0 +1,70 @@
+.login-container {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.login-card {
+  background-color: rgba(255, 255, 255, 0.98);
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(10px);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(64, 93, 230, 0.4) !important;
+}
+
+.form-control {
+  border-radius: 10px !important;
+  padding: 12px 20px !important;
+  font-size: 16px !important;
+  border: 2px solid #eee !important;
+  background-color: #f8f9fa !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-control:focus {
+  border-color: #405de6 !important;
+  box-shadow: 0 0 0 0.2rem rgba(64, 93, 230, 0.25) !important;
+  background-color: #fff !important;
+}
+
+.alert {
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+/* Add responsive padding */
+@media (max-width: 768px) {
+  .login-card {
+    margin: 20px;
+  }
+}
+
