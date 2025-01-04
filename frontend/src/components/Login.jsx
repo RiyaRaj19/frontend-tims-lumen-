@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { login } from './api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +19,14 @@ const Login = () => {
       setError('Invalid email or password');
     }
   };
-
+const handleLogin = async () => {
+    try {
+        const response = await login({ username, password });
+        localStorage.setItem('token', response.token);
+    } catch (err) {
+        console.error(err.message);
+    }
+};
   return (
     <Container fluid className="login-container">
       <Row className="justify-content-center align-items-center min-vh-100">
